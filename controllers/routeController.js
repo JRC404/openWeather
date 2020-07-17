@@ -1,5 +1,7 @@
 // functions
 const weather = require('../lib/weather');
+const User = require('../models/user');
+
 
 exports.getIndex = async (req, res) => {
     let { city, country } = req.query
@@ -16,13 +18,21 @@ exports.postIndex = async (req, res) => {
 
 exports.getLogin = async (req, res) => {
     let { name, email} = req.query
-    let info = {
+    const user = new User({
         name,
-        email
-    }
-    res.send(info)
+        email,
+        password: 'secret'
+    })
+    res.send(user)
 }
 
-exports.postLogin = async (req, res) => {
-    
+exports.postSignup = async (req, res) => {
+    let { name, email} = req.query
+    const user = new User({
+        name,
+        email,
+        password: 'secret'
+    })
+    user.save();
+    res.send(user);
 }
