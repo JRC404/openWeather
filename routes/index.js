@@ -5,6 +5,8 @@ routes.get('/', routeController.getIndex);
 routes.post('/', routeController.postIndex);
 
 routes.get('/login', routeController.getLogin);
+routes.post('/login', routeController.postLogin);
+
 routes.post('/signup', routeController.postSignup);
 
 module.exports = routes;
