@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+app.use(session({secret: 'ssshhhhh'}));
 app.use('/', routes);
 
 // query strings: req.query.city
