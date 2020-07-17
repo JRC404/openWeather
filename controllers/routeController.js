@@ -13,3 +13,16 @@ exports.postIndex = async (req, res) => {
     let data = await weather(city, country);
     res.send(data);
 }
+
+exports.getLogin = async (req, res) => {
+    let { name, email} = req.query
+    let info = {
+        name,
+        email
+    }
+    res.send(info)
+}
+
+exports.postLogin = async (req, res) => {
+    
+}
