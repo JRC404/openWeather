@@ -1,10 +1,23 @@
 const express = require('express');
 const app = express();
+const path = require('path');
+const bodyParser = require('body-parser');
 
-app.get('/', (req, res) => {
-    res.send('open weather')
-})
+// internal imports
+const routes = require('./routes');
 
-app.listen(3005, () => {
-    console.log("server listening on 3005.");
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// app.get('/', (req, res) => {
+//     res.send('open weather')
+// })
+
+app.use('/', routes);
+
+// query strings: req.query.city
+
+app.listen(3008, () => {
+    console.log("server listening on 3008.");
 })
