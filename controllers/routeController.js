@@ -18,11 +18,9 @@ exports.postIndex = async (req, res) => {
 
 exports.getLogin = async (req, res) => {
     let { name, email} = req.query
-    const user = new User({
-        name,
-        email,
-        password: 'secret'
-    })
+
+    let user = await User.findOne({name, email});
+    console.log(user);
     res.send(user)
 }
 
