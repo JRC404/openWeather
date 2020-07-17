@@ -2,8 +2,8 @@
 const weather = require('../lib/weather');
 
 exports.getIndex = async (req, res) => {
-    let city = req.query.city;
-    let data = await weather(city);
+    let { city, country } = req.query
+    let data = await weather(city, country);
     console.log(data)
     res.send(data);
 }
